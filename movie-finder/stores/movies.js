@@ -33,6 +33,7 @@ export const useMoviesStore = defineStore("movies", {
         if (Response.includes("True")) {
           if (includeDirector) {
             const detailedMoviesPromises = Search.map((movie) => $fetch(url, { params: { i: movie.imdbID } }))
+            //we cant get director by search, need to use this
             const detailedMovies = (await Promise.all(detailedMoviesPromises)).map(({ Director, Year, Title, imdbID, Poster }) => ({
               Director,
               Year,
