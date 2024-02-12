@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-5 items-center flex-between justify-center h-full">
-    <SearchBox additional-filters />
+    <SearchBox isMovieExist />
     <el-carousel class="w-2/3" type="card">
       <el-carousel-item class="bg-violet-300 rounded-lg" v-for="item of moviesStore.movies" :key="item.imdbID">
         <div class="flex justify-between h-full">

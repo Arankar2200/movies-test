@@ -12,7 +12,7 @@ import { Search } from "@element-plus/icons-vue"
 import { useMoviesStore } from "~/stores/movies"
 
 const props = defineProps({
-  additionalFilters: {
+  isMovieExist: {
     type: Boolean,
     default: false,
   },
@@ -21,7 +21,7 @@ const {
   public: { baseUrl, apiKey },
 } = useRuntimeConfig()
 const url = `${baseUrl}?apiKey=${apiKey}`
-const { additionalFilters } = props
+const { isMovieExist } = props
 
 const searchValue = ref("")
 const fullscreenLoading = ref(false)
@@ -35,7 +35,7 @@ const fetchMovies = async () => {
       s: searchValue.value,
     }
     await moviesStore.fetchMovies(url, params)
-    if (!additionalFilters) {
+    if (!isMovieExist) {
       router.push({ path: "/movies" })
     }
   } catch (error) {
